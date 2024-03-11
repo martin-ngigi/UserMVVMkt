@@ -27,7 +27,6 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintHorizontal_bias="0.0"
-        android:layout_below="@id/textInputLayoutUsername"
         />
 
     <androidx.recyclerview.widget.RecyclerView
