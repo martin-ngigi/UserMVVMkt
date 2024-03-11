@@ -1,30 +1,35 @@
 package com.safiribytes.usermvvmkt
 
 import android.annotation.SuppressLint
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.safiribytes.usermvvmkt.User
-import com.safiribytes.usermvvmkt.ApiService
-
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
     private val userList: MutableList<User> = mutableListOf()
     private  lateinit var adapter: UserAdapter
     private  lateinit var jsonPlaceholderApi: ApiService.JsonPlaceholderApi
+    private lateinit var createUserBtn: Button
 
-//    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        createUserBtn = findViewById(R.id.createUserBtn)
+        createUserBtn.setOnClickListener {
+            val i = Intent(this@MainActivity, CreateUserActivity::class.java)
+            startActivity(i);
+        }
 
         adapter = UserAdapter(userList)
 
